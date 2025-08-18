@@ -1,0 +1,62 @@
+# Node dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+frontend/.env
+backend/.env
+
+# Build outputs
+build/
+dist/
+coverage/
+.eslintcache
+
+# Frontend (React/CRA) build and caches
+frontend/build/
+frontend/.cache/
+frontend/.parcel-cache/
+frontend/.next/
+frontend/.nuxt/
+frontend/out/
+
+# Backend build outputs (if any)
+backend/build/
+backend/dist/
+
+# Temporary files
+.tmp/
+.temp/
+.cache/
+.cache-loader/
+*.tmp
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE project files (keep .vscode tracked if already committed)
+.idea/
+
+# Hosting providers
+.netlify/
+.vercel/
+
+# Databases / local data
+*.sqlite
+*.sqlite3
+*.db
+*.local

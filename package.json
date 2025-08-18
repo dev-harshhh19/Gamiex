@@ -1,0 +1,28 @@
+{
+  "name": "internship2",
+  "version": "1.0.0",
+  "description": "A minimal e-commerce website built with the MERN stack (MongoDB, Express, React, Node.js) for educational purposes.",
+  "main": "index.js",
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "gsap": "^3.13.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eject": "react-scripts eject",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "Harshad Nikam",
+  "license": "ISC"
+}
