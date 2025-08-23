@@ -284,30 +284,6 @@ Competitive combat, martial arts mastery, and tournament action
 
 ---
 
-## 🎮 **Production Deployment**
-
-### **Quick Deployment**
-```bash
-# Automated deployment script
-./deploy.sh both
-```
-
-### **Manual Deployment**
-```bash
-# Backend with PM2
-cd backend && npm run pm2:start
-
-# Frontend with Vercel
-cd frontend && vercel --prod
-```
-
-### **Environment Configuration**
-- See `DEPLOYMENT.md` for complete setup instructions
-- See `PRODUCTION-CHECKLIST.md` for deployment verification
-- See `.env.example` files for configuration templates
-
----
-
 **Gaming Store - Where Premium Gaming Meets Professional Excellence** 🎮✨
 
 *Built for gamers, designed for scale, secured for enterprise.*
