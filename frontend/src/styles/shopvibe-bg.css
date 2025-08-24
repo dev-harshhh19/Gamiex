@@ -1,0 +1,40 @@
+/* Global background to match Checkout.jsx across the whole app */
+:root {
+  --sv-indigo: 102, 126, 234; /* #667eea */
+  --sv-purple: 118, 75, 162;  /* #764ba2 */
+  --sv-white: 255, 255, 255;
+  --sv-purple300: 196, 181, 253; /* tailwind purple-300 */
+  --sv-cyan300: 103, 232, 249;   /* tailwind cyan-300 */
+}
+
+.shopvibe-bg {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgb(var(--sv-indigo)) 0%, rgb(var(--sv-purple)) 100%);
+  color: inherit;
+}
+
+/* Multi-glow field using radial gradients to mimic Checkout's blobs */
+.shopvibe-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(40% 40% at 15% 12%, rgba(var(--sv-white), 0.10) 0%, rgba(var(--sv-white), 0.00) 60%),
+    radial-gradient(35% 35% at 85% 75%, rgba(var(--sv-purple300), 0.20) 0%, rgba(var(--sv-purple300), 0.00) 60%),
+    radial-gradient(30% 30% at 55% 55%, rgba(var(--sv-cyan300), 0.10) 0%, rgba(var(--sv-cyan300), 0.00) 60%);
+  filter: blur(60px);
+}
+
+/* Ensure content stays above background */
+.shopvibe-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Reduce motion does not affect; there is no animation here, but keep hook for parity. */
+@media (prefers-reduced-motion: reduce) {
+  .shopvibe-bg::before { filter: blur(50px); }
+}

@@ -44,14 +44,7 @@ const paymentService = {
             fees: 'Low fees',
             processingTime: 'Instant',
           },
-          {
-            id: PAYMENT_PROVIDERS.CASH_ON_DELIVERY,
-            name: 'Cash on Delivery',
-            description: 'Pay with cash upon delivery',
-            icon: 'https://img.icons8.com/ios-filled/50/000000/cash-in-hand.png',
-            fees: 'No fees',
-            processingTime: 'Upon delivery',
-          },
+
         ]);
       }, 500);
     });

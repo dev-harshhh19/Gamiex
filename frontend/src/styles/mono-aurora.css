@@ -1,0 +1,66 @@
+/* Single-accent subtle grid + soft glow background */
+:root {
+  /* Accent color: Blue (#3b82f6) as RGB components for alpha blending */
+  --accent-color: 59, 130, 246;
+  /* Deep navy base, close to screenshot vibe */
+  --bg-base: 11, 18, 32; /* #0b1220 */
+}
+
+/* Attach this to the main page wrapper */
+.app-bg {
+  position: relative;
+  background-color: rgb(var(--bg-base));
+  color: inherit; /* don’t change your theme text colors */
+}
+
+/* Subtle grid layer */
+.app-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* 64px grid with faint lines */
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.35;
+}
+
+/* Single-color aurora-like glow, positioned at corners and center */
+.app-bg::after {
+  content: "";
+  position: absolute;
+  inset: -12% -12% -12% -12%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 50% at 15% -10%, rgba(var(--accent-color), 0.20) 0%, rgba(var(--accent-color), 0) 60%),
+    radial-gradient(60% 50% at 85% -10%, rgba(var(--accent-color), 0.14) 0%, rgba(var(--accent-color), 0) 60%),
+    radial-gradient(40% 40% at 50% 60%, rgba(var(--accent-color), 0.08) 0%, rgba(var(--accent-color), 0) 60%);
+  filter: blur(50px);
+  animation: floatGlow 18s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  from {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  to {
+    transform: translateY(18px) translateX(12px) scale(1.03);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .app-bg::after {
+    animation: none;
+  }
+}
+
+/* Ensure content stays above the background layers */
+.app-bg > * {
+  position: relative;
+  z-index: 1;
+}

@@ -60,3 +60,4 @@ Thumbs.db
 *.sqlite3
 *.db
 *.local
+*.env.example 

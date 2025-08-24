@@ -1,0 +1,43 @@
+/* Cursor Spotlight Effect */
+.cursor-spotlight {
+  position: fixed;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(0, 224, 255, 0.15) 0%, rgba(0, 224, 255, 0.08) 40%, rgba(0, 224, 255, 0.03) 70%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease-out,
+    left 0.15s ease-out,
+    top 0.15s ease-out;
+  mix-blend-mode: normal;
+  box-shadow: 0 0 40px rgba(0, 224, 255, 0.1);
+}
+
+.cursor-spotlight.active {
+  opacity: 0.6;
+}
+
+/* Keep cursor visible - don't hide it */
+body {
+  cursor: auto !important;
+}
+
+/* Smooth following animation */
+@keyframes spotlightPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.4;
+  }
+}
+
+.cursor-spotlight.active {
+  animation: spotlightPulse 3s ease-in-out infinite;
+}

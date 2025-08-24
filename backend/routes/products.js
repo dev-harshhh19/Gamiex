@@ -85,17 +85,42 @@ router.get('/:id', async (req, res) => {
 // @access  Public (for seeding purposes)
 router.post('/', async (req, res) => {
   try {
-    const { _id, name, price, description, imageUrl, category } = req.body;
-    
+    const {
+      _id,
+      name,
+      price,
+      description,
+      imageUrl,
+      category,
+      publisher,
+      developer,
+      platforms,
+      tags,
+      releaseDate,
+      ageRating,
+      trailerUrl,
+      screenshots,
+      requirements
+    } = req.body;
+
     const product = await Product.create({
       _id: _id || `product_${Date.now()}`,
       name,
       price,
       description,
       imageUrl,
-      category
+      category,
+      publisher: publisher || 'Unknown Publisher',
+      developer: developer || 'Unknown Developer',
+      platforms: platforms || ['PC'],
+      tags: tags || [],
+      releaseDate: releaseDate || new Date(),
+      ageRating: ageRating || 'E',
+      trailerUrl,
+      screenshots: screenshots || [],
+      requirements: requirements || {}
     });
-    
+
     res.status(201).json({
       success: true,
       data: product

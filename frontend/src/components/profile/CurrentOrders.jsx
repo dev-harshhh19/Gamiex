@@ -69,19 +69,23 @@ const CurrentOrders = ({ orders, onCancelOrder }) => {
           <button
             onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="px-4 py-2 border border-border rounded-md bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50"
+            className="w-10 h-10 border border-white/20 rounded-lg bg-charcoal-light text-white hover:bg-charcoal-card disabled:opacity-30 transition-all duration-300 flex items-center justify-center"
           >
-            Previous
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
           </button>
-          <span className="text-sm text-muted-foreground">
+          <span className="text-sm text-white">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="px-4 py-2 border border-border rounded-md bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50"
+            className="w-10 h-10 border border-white/20 rounded-lg bg-charcoal-light text-white hover:bg-charcoal-card disabled:opacity-30 transition-all duration-300 flex items-center justify-center"
           >
-            Next
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
       )}

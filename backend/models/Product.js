@@ -43,7 +43,17 @@ const productSchema = new mongoose.Schema({
   category: { // Renamed from genre to category for consistency with frontend
     type: String,
     required: [true, 'Game category is required'],
-    enum: ['Action', 'Adventure', 'RPG', 'Strategy', 'Simulation', 'Sports', 'Puzzle', 'Racing', 'Fighting', 'Horror', 'Platformer', 'Open World', 'Multiplayer', 'Singleplayer', 'Indie', 'AAA']
+    enum: ['Action', 'Adventure', 'RPG', 'Strategy', 'Simulation', 'Sports', 'Puzzle', 'Racing', 'Fighting', 'Horror', 'Platformer', 'Open World', 'Multiplayer', 'Singleplayer', 'Indie', 'AAA', 'Games']
+  },
+  tags: {
+    type: [String],
+    default: [],
+    validate: {
+      validator: function(tags) {
+        return tags.length <= 10; // Limit to 10 tags
+      },
+      message: 'Cannot have more than 10 tags'
+    }
   },
   releaseDate: {
     type: Date,
@@ -61,8 +71,23 @@ const productSchema = new mongoose.Schema({
   screenshots: {
     type: [String]
   },
-  systemRequirements: {
-    type: Object // Flexible for minimum/recommended specs
+  requirements: {
+    minimum: {
+      OS: { type: String },
+      CPU: { type: String },
+      RAM: { type: String },
+      GPU: { type: String },
+      DirectX: { type: String },
+      Storage: { type: String }
+    },
+    recommended: {
+      OS: { type: String },
+      CPU: { type: String },
+      RAM: { type: String },
+      GPU: { type: String },
+      DirectX: { type: String },
+      Storage: { type: String }
+    }
   },
   createdAt: {
     type: Date,
