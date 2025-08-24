@@ -176,7 +176,7 @@ const Checkout = () => {
       console.error('PayPal button initialization error:', error);
       setError('Failed to initialize PayPal. Please refresh and try again.');
     }
-  }, [cart, navigate, useCallback, paypalLoaded]);
+  }, [cart, navigate, paypalLoaded, showLoading, hideLoading, setCart, setOrderPlaced, setError, setLoading]);
 
   // Initialize form with user data if available
   useEffect(() => {

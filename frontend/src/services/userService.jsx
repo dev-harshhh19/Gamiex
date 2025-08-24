@@ -1,34 +1,28 @@
-import axios from 'axios';
+import api from '../config/api.js';
 
-const API_URL = '/api/auth';
+// Auth headers are now handled by api interceptors, no need for getAuthConfig
 
-const getAuthConfig = (token) => ({
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-});
-
-export const fetchUserProfile = async (token) => {
-  const { data } = await axios.get(`${API_URL}/profile`, getAuthConfig(token));
+export const fetchUserProfile = async () => {
+  const { data } = await api.get('/api/auth/profile');
   return data.data;
 };
 
-export const updateUserProfile = async (token, profileData) => {
-  const { data } = await axios.put(`${API_URL}/profile`, profileData, getAuthConfig(token));
+export const updateUserProfile = async (profileData) => {
+  const { data } = await api.put('/api/auth/profile', profileData);
   return data.data;
 };
 
-export const fetchOrderHistory = async (token) => {
-  const { data } = await axios.get('/api/orders/myorders', getAuthConfig(token));
+export const fetchOrderHistory = async () => {
+  const { data } = await api.get('/api/orders/myorders');
   return data.data;
 };
 
-export const fetchCurrentOrders = async (token) => {
-  const { data } = await axios.get('/api/orders/current', getAuthConfig(token));
+export const fetchCurrentOrders = async () => {
+  const { data } = await api.get('/api/orders/current');
   return data.data;
 };
 
-export const cancelOrder = async (token, orderId) => {
-  const { data } = await axios.put(`/api/orders/${orderId}/cancel`, {}, getAuthConfig(token));
+export const cancelOrder = async (orderId) => {
+  const { data } = await api.put(`/api/orders/${orderId}/cancel`, {});
   return data.data;
 };

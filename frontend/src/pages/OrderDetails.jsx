@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import api from '../config/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 
 const OrderDetails = () => {
@@ -13,12 +13,7 @@ const OrderDetails = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${user.token}`,
-          },
-        };
-        const { data } = await axios.get(`/api/orders/${id}`, config);
+        const { data } = await api.get(`/api/orders/${id}`);
         setOrder(data.data);
       } catch (err) {
         setError('Failed to fetch order details.');
@@ -28,7 +23,7 @@ const OrderDetails = () => {
       }
     };
 
-    if (user && user.token) {
+    if (user && localStorage.getItem('token')) {
       fetchOrderDetails();
     }
   }, [id, user]);

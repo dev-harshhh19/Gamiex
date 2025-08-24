@@ -12,7 +12,7 @@ const ProfilePage = () => {
     address: ''
   });
   const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [error] = useState('');
 
   useEffect(() => {
     if (user) {

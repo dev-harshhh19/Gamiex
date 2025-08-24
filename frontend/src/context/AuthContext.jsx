@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import axios from 'axios';
+import api from '../config/api.js';
 
 const AuthContext = createContext();
 
@@ -17,14 +17,14 @@ export const AuthProvider = ({ children }) => {
     
     if (token && userData) {
       setUser(JSON.parse(userData));
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      // Authorization header is now handled by api interceptors
     }
     setLoading(false);
   }, []);
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/login', {
+      const response = await api.post('/api/auth/login', {
         email,
         password
       });
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         secondaryEmail: data.secondaryEmail || '',
       });
 
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      // Authorization header is now handled by api interceptors
       
       return { success: true };
     } catch (error) {
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const response = await axios.post('/api/auth/register', {
+      const response = await api.post('/api/auth/register', {
         name,
         email,
         password
@@ -90,7 +90,7 @@ export const AuthProvider = ({ children }) => {
         secondaryEmail: data.secondaryEmail || '',
       });
 
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data.token}`;
+      // Authorization header is now handled by api interceptors
       
       return { success: true };
     } catch (error) {
@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
-    delete axios.defaults.headers.common['Authorization'];
+    // Authorization header cleanup is handled by api interceptors
   };
 
   const value = {

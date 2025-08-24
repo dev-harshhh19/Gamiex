@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../config/api.js';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const ContactUs = () => {
     setError('');
 
     try {
-      await axios.post('/api/contact', formData);
+      await api.post('/api/contact', formData);
       setMessage('Your message has been sent successfully!');
       setFormData({ name: '', email: '', message: '' });
     } catch (err) {

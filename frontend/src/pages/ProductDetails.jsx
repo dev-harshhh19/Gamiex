@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../config/api.js';
 import { addToCart } from '../utils/cartUtils.jsx';
 import { useCart } from '../context/CartContext.jsx';
 
@@ -28,7 +28,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`/api/products/${id}`);
+        const response = await api.get(`/api/products/${id}`);
         setProduct(response.data.data);
         setError('');
       } catch (err) {

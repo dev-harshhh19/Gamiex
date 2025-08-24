@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
+import api from '../config/api.js';
 import { useAuth } from '../context/AuthContext.jsx';
 import { getCartFromStorage, clearCart } from '../utils/cartUtils.jsx';
 
@@ -51,7 +51,7 @@ const Checkout = () => {
                 },
                 paymentDetails: order, // Store PayPal order details
               };
-              await axios.post('/api/orders', orderData);
+              await api.post('/api/orders', orderData);
               clearCart();
               setCart({ items: [], totalAmount: 0 });
               setOrderPlaced(true);

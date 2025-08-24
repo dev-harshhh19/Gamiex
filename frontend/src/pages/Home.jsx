@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../config/api.js';
 import ProductCard from '../components/ProductCard.jsx';
 import { getPageUrl } from '../utils/urlUtils.js';
 
@@ -23,9 +23,9 @@ const Home = ({ searchTerm, lenisRef }) => {
       let response;
       const skip = (currentPage - 1) * itemsPerPage;
       if (searchTerm) {
-        response = await axios.get(`/api/products?search=${searchTerm}&limit=${itemsPerPage}&skip=${skip}`);
+        response = await api.get(`/api/products?search=${searchTerm}&limit=${itemsPerPage}&skip=${skip}`);
       } else {
-        response = await axios.get(`/api/products?limit=${itemsPerPage}&skip=${skip}`);
+        response = await api.get(`/api/products?limit=${itemsPerPage}&skip=${skip}`);
       }
       setProducts(response.data.data);
       if (lenisRef && lenisRef.current) {

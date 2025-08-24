@@ -15,7 +15,12 @@
     "pm2:delete": "pm2 delete gaming-store-api",
     "pm2:logs": "pm2 logs gaming-store-api",
     "pm2:monit": "pm2 monit",
-    "pm2:status": "pm2 status"
+    "pm2:status": "pm2 status",
+    "keep-alive": "node scripts/keep-atlas-alive.js",
+    "test-keep-alive": "node scripts/test-keep-alive.js",
+    "setup-cronjob": "scripts/setup-cronjob.sh",
+    "setup-windows-task": "scripts/setup-windows-task.bat",
+    "setup-windows-task-ps": "powershell -ExecutionPolicy Bypass -File scripts/setup-windows-task.ps1"
   },
   "keywords": [
     "ecommerce",

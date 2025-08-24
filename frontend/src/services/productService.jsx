@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = '/api/products'; // Assuming your backend API for products is at /api/products
+import api from '../config/api.js';
 
 const productService = {
   /**
@@ -11,7 +9,7 @@ const productService = {
    */
   fetchGames: async (limit = 20, skip = 0) => {
     try {
-      const response = await axios.get(`${API_URL}?limit=${limit}&skip=${skip}`);
+      const response = await api.get(`/api/products?limit=${limit}&skip=${skip}`);
       return response.data;
     } catch (error) {
       console.error('Error fetching games:', error);
@@ -26,7 +24,7 @@ const productService = {
    */
   fetchGameDetails: async (id) => {
     try {
-      const response = await axios.get(`${API_URL}/${id}`);
+      const response = await api.get(`/api/products/${id}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching game details for ID ${id}:`, error);
@@ -42,7 +40,7 @@ const productService = {
    */
   fetchGamesByCategory: async (category, limit = 20) => {
     try {
-      const response = await axios.get(`${API_URL}/category/${category}?limit=${limit}`);
+      const response = await api.get(`/api/products/category/${category}?limit=${limit}`);
       return response.data;
     } catch (error) {
       console.error(`Error fetching games for category ${category}:`, error);
@@ -56,7 +54,7 @@ const productService = {
    */
   fetchGameCategories: async () => {
     try {
-      const response = await axios.get(`${API_URL}/categories`);
+      const response = await api.get('/api/products/categories');
       return response.data;
     } catch (error) {
       console.error('Error fetching game categories:', error);
@@ -72,7 +70,7 @@ const productService = {
    */
   searchGames: async (query, limit = 20) => {
     try {
-      const response = await axios.get(`${API_URL}/search?q=${encodeURIComponent(query)}&limit=${limit}`);
+      const response = await api.get(`/api/products/search?q=${encodeURIComponent(query)}&limit=${limit}`);
       return response.data;
     } catch (error) {
       console.error(`Error searching games for query "${query}":`, error);
