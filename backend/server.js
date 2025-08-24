@@ -52,6 +52,8 @@ const allowedOrigins = [
   'https://gamiex-q0tr01fmz-dev-harshhh18s-projects.vercel.app',
   'https://gamiex-4szwzzpoq-dev-harshhh18s-projects.vercel.app',
   'https://gamiex-6kowqrvka-dev-harshhh18s-projects.vercel.app',
+  'https://gamiex-1g2t29zqr-dev-harshhh18s-projects.vercel.app',
+  'https://gamiex-3g7newwqu-dev-harshhh18s-projects.vercel.app',
   'http://localhost:3000',
   'http://localhost:3001'
 ];
