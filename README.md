@@ -284,10 +284,6 @@ Competitive combat, martial arts mastery, and tournament action
 
 ---
 
-<<<<<<< HEAD
-**Gamiex - Where Premium Gaming Meets Professional Excellence** 🎮✨
-=======
 **Gaming Store - Where Premium Gaming Meets Professional Excellence** 🎮✨
->>>>>>> 2a8d7c0b867f012880c2baa95810a39c680316e1
 
 *Built for gamers, designed for scale, secured for enterprise.*
