@@ -53,6 +53,7 @@ Thumbs.db
 
 # Hosting providers
 .netlify/
+.pm2
 .vercel/
 
 # Databases / local data
@@ -60,4 +61,4 @@ Thumbs.db
 *.sqlite3
 *.db
 *.local
-*.env.example 
+# *.env.example 
