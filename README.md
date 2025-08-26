@@ -69,7 +69,7 @@ Express Rate Limit    API rate limiting
 
 ### **Production Infrastructure**
 ```
-PM2                   Process management and clustering
+Render                Full-stack cloud platform with auto-deploys, managed databases, and global CDN 
 Vercel                Frontend hosting with global CDN
 MongoDB Atlas         Cloud database with automatic scaling
 Let's Encrypt         SSL certificate management
@@ -213,7 +213,7 @@ Competitive combat, martial arts mastery, and tournament action
 - **Error Monitoring** - Proactive issue detection
 
 ### **Scalability Features**
-- **Horizontal Scaling** - PM2 cluster mode support
+- **Horizontal Scaling** - Render cluster mode support
 - **Database Optimization** - Indexed queries and connection pooling
 - **CDN Integration** - Global content distribution
 - **Microservice Ready** - Modular architecture for future expansion
