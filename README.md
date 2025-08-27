@@ -1,4 +1,4 @@
-# 🎮 Gaming Store - Premium Gaming Platform
+# 🎮 Gamiex - Premium Gaming Platform
 
 **A cutting-edge e-commerce platform delivering the ultimate gaming experience with 53+ carefully curated premium titles.**
 
@@ -6,7 +6,7 @@
 
 ## 🌟 **Platform Overview**
 
-Gaming Store is a professional-grade e-commerce platform designed specifically for gaming enthusiasts. Built with modern web technologies and enterprise-level security, our platform offers a seamless shopping experience for premium gaming content.
+Gamiex is a professional-grade e-commerce platform designed specifically for gaming enthusiasts. Built with modern web technologies and enterprise-level security, our platform offers a seamless shopping experience for premium gaming content.
 
 ### **🎯 Key Highlights**
 - **53+ Premium Games** across 6 major categories
@@ -284,6 +284,6 @@ Competitive combat, martial arts mastery, and tournament action
 
 ---
 
-**Gaming Store - Where Premium Gaming Meets Professional Excellence** 🎮✨
+**Gamiex - Where Premium Gaming Meets Professional Excellence** 🎮✨
 
 *Built for gamers, designed for scale, secured for enterprise.*
