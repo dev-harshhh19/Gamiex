@@ -112,7 +112,7 @@ app.listen(PORT, async () => { // Made async to await connectToDatabase
   if (connected) {
     console.log('✅ MongoDB Atlas keep-alive connection established.');
     // Schedule keep-alive script to run every 12 minutes
-    cron.schedule('*/12 * * * *', () => {
+    cron.schedule('*/10 * * * *', () => {
       console.log('Running keep-alive script...');
       writeDotToDatabase(); // Use the imported function
     });
