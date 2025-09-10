@@ -5,6 +5,8 @@ const rateLimit = require('express-rate-limit');
 const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const validateEnvironment = require('./config/validateEnv.js');
+const cron = require('node-cron');
+const { connectToDatabase, writeDotToDatabase } = require('./scripts/keep-atlas-alive.js'); // Import specific functions
 
 // Load environment variables
 dotenv.config({ path: './.env' });
@@ -12,10 +14,11 @@ dotenv.config({ path: './.env' });
 // Validate environment variables
 validateEnvironment();
 
-// Connect to database
+// Connect to database (initial connection)
 connectDB();
 
 const app = express();
+app.set('trust proxy', 1);
 
 // Security middleware
 app.use(helmet({
@@ -53,7 +56,6 @@ const allowedOrigins = [
   'https://gamiex-4szwzzpoq-dev-harshhh18s-projects.vercel.app',
   'https://gamiex-6kowqrvka-dev-harshhh18s-projects.vercel.app',
   'https://gamiex-1g2t29zqr-dev-harshhh18s-projects.vercel.app',
-  'https://gamiex-3g7newwqu-dev-harshhh18s-projects.vercel.app',
   'http://localhost:3000',
   'http://localhost:3001'
 ];
@@ -102,6 +104,20 @@ app.use('/api/contact', require('./routes/contact'));
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => { // Made async to await connectToDatabase
   console.log(`Server running on port ${PORT}`);
+
+  // Establish initial connection for keep-alive
+  const connected = await connectToDatabase();
+  if (connected) {
+    console.log('✅ MongoDB Atlas keep-alive connection established.');
+    // Schedule keep-alive script to run every 12 minutes
+    cron.schedule('*/12 * * * *', () => {
+      console.log('Running keep-alive script...');
+      writeDotToDatabase(); // Use the imported function
+    });
+    console.log('✅ Cron job scheduled: Keep-alive script will run every 12 minutes.');
+  } else {
+    console.error('❌ Failed to establish MongoDB Atlas keep-alive connection. Cron job will not run.');
+  }
 });

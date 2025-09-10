@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  * MongoDB Atlas Keep-Alive Script
  * 
@@ -8,7 +6,8 @@
  * 2. Writing a dot (.) to a keep-alive collection
  * 3. Updating the timestamp
  * 
- * Run this script every 20 minutes via cron job
+ * This version is designed to be integrated into a long-running process
+ * and does not manage its own connection lifecycle or process exit.
  */
 
 const mongoose = require('mongoose');
@@ -93,75 +92,5 @@ async function writeDotToDatabase() {
   }
 }
 
-/**
- * Cleanup and close connection
- */
-async function cleanup() {
-  try {
-    await mongoose.connection.close();
-    console.log('🔌 Database connection closed');
-  } catch (error) {
-    console.error(`❌ Error closing connection: ${error.message}`);
-  }
-}
-
-/**
- * Main execution function
- */
-async function main() {
-  console.log('🚀 Starting MongoDB Atlas Keep-Alive Script...');
-  console.log(`⏰ Timestamp: ${new Date().toISOString()}`);
-  
-  // Connect to database
-  const connected = await connectToDatabase();
-  if (!connected) {
-    process.exit(1);
-  }
-  
-  // Write dot to database
-  const success = await writeDotToDatabase();
-  
-  // Cleanup
-  await cleanup();
-  
-  if (success) {
-    console.log('✅ Keep-alive script completed successfully');
-    process.exit(0);
-  } else {
-    console.log('❌ Keep-alive script failed');
-    process.exit(1);
-  }
-}
-
-// Handle process termination
-process.on('SIGINT', async () => {
-  console.log('\n⚠️ Received SIGINT, cleaning up...');
-  await cleanup();
-  process.exit(0);
-});
-
-process.on('SIGTERM', async () => {
-  console.log('\n⚠️ Received SIGTERM, cleaning up...');
-  await cleanup();
-  process.exit(0);
-});
-
-// Handle uncaught exceptions
-process.on('uncaughtException', async (error) => {
-  console.error('💥 Uncaught Exception:', error);
-  await cleanup();
-  process.exit(1);
-});
-
-process.on('unhandledRejection', async (reason, promise) => {
-  console.error('💥 Unhandled Rejection at:', promise, 'reason:', reason);
-  await cleanup();
-  process.exit(1);
-});
-
-// Run the script
-if (require.main === module) {
-  main();
-}
-
-module.exports = { main, connectToDatabase, writeDotToDatabase };
+// Export functions for use in other modules
+module.exports = { connectToDatabase, writeDotToDatabase };

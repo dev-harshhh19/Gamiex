@@ -1,5 +1,5 @@
 {
-  "name": "primeekart-backend",
+  "name": "Gamiex-backend",
   "version": "1.0.0",
   "description": "Backend for Gamiex e-commerce platform",
   "main": "server.js",
@@ -38,7 +38,8 @@
     "express-rate-limit": "^8.0.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^7.5.0"
+    "mongoose": "^7.5.0",
+    "node-cron": "^3.0.0"
   },
   "devDependencies": {
     "colors": "^1.4.0",

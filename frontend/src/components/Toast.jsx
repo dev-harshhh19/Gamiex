@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 
-const Toast = ({ message, isVisible, onClose, type = 'info' }) => {
+const Toast = ({ message, isVisible, onClose, type = 'info', duration = 2000 }) => {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
         onClose();
-      }, 2000); // Auto-hide after 2 seconds
+      }, duration); // Auto-hide after duration
 
       return () => clearTimeout(timer);
     }
-  }, [isVisible, onClose]);
+  }, [isVisible, onClose, duration]);
 
   if (!isVisible) return null;
 
